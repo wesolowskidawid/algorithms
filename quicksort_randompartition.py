@@ -55,7 +55,7 @@ def random_partition(A, l, r):
 def quicksort(A, l, r):
     if l < r:
         # Znajdź indeks pivotu taki, że elementy na lewo od pivotu są mniejsze, a na prawo większe
-        pi = partition(A, l, r)
+        pi = random_partition(A, l, r)
 
         # Sortowanie rekurencyjne lewej i prawej części
         quicksort(A, l, pi)
