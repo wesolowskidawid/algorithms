@@ -1,8 +1,11 @@
 #
-# Opis: Implementacja algorytmu sortowania szybkiego (quicksort)
-# Złożoność czasowa: O(n*log(n)) / w najgorszym przypadku O(n^2) (wtedy używamy random_partition)
-# Złożoność pamięciowa: O(log(n)) / w najgorszym przypadku O(n)
+# Opis: Implementacja algorytmu sortowania szybkiego (quicksort) z wyborem losowego elementu jako pivotu.
+# (Randomized partition)
+# Złożoność czasowa: O(n*log(n))
+# Złożoność pamięciowa: O(log(n))
 #
+import random
+
 
 # Wybierz element nazwany Pivot
 # Idąc w górę znajdź pierwszy element >= Pivot
@@ -31,10 +34,19 @@ def partition(A, l, r):
         # Zamień elementy miejscami
         A[i], A[j] = A[j], A[i]
 
-
         # Przesuń indeksy
         i = i + 1
         j = j - 1
+
+# Wybierz losowy element jako pivot
+# Zamień go z pierwszym elementem
+# Wykonaj partition
+# Argumenty: A - tablica; l - indeks dolny; h - indeks górny
+def random_partition(A, l, r):
+    pivot = random.randint(l, r)
+    # Zamiana pivota na początek tablicy
+    A[l], A[pivot] = A[pivot], A[l]
+    return partition(A, l, r)
 
 
 # Podziel tablicę A na dwie części: A1[p..q] i A2[q+1..r], gdzie każdy element z A1 <= każdy element z A2
